@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"HTTP: %{http_code}\\\\n\" -m 10 \"http://patri.in/remove_bg\")",
+      "Bash(curl -s -o /dev/null -w \"HTTPS: %{http_code}\\\\n\" -m 10 \"https://patri.in/remove_bg\")"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+# iAuditOne — Remove Background
+
+> Free, private, AI-powered tool that removes the background from any photo instantly, right in the browser. Upload an image and get a transparent PNG in seconds — no uploads to a server, no signup, no watermark.
+
+iAuditOne's Remove Background tool runs entirely on-device using WebAssembly/WebGPU-accelerated AI (an ISNet-family segmentation model via ONNX Runtime Web). It is a free product of iAuditOne, a company that also builds iAuditHRM (HR & payroll software) and iAuditNext, also known as OpenCompas (an education ERP for schools and colleges).
+
+## Key facts
+
+- 100% free and unlimited — no account, signup, or payment required
+- Runs fully client-side: photos are never uploaded to a server, which the tool relies on for its privacy claim
+- Accepts PNG, JPG, or WEBP input; outputs a transparent PNG
+- Works in any modern browser with WebAssembly support (Chrome, Edge, Firefox, Safari)
+- Typical use cases: e-commerce product photos, profile/ID pictures, marketing graphics, and presentations
+
+## Pages
+
+- [Remove Background tool](https://patri.in/remove_bg/): the main (and only) page — upload a photo, click Start, download the transparent PNG result
+- [iAuditHRM](https://iaudithrm.com/): sister product — HR and payroll software
+- [iAuditNext / OpenCompas](https://opencompas.com/): sister product — education ERP for schools and colleges

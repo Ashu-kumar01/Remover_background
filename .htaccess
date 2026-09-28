@@ -1,0 +1,37 @@
+# Cross-origin isolation — required for SharedArrayBuffer, which lets the
+# WASM background-removal model run multi-threaded instead of single-threaded.
+<IfModule mod_headers.c>
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set Cross-Origin-Embedder-Policy "require-corp"
+</IfModule>
+
+<IfModule mod_mime.c>
+    AddType application/wasm .wasm
+    AddType text/javascript .mjs
+</IfModule>
+
+# Compress text-based assets in transit.
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# Long-cache the large runtime/model files: the .wasm/.mjs runtime files and
+# the content-hashed model chunks (64-char hex filenames, no extension) never
+# change under the same name, so repeat visits skip the multi-megabyte
+# re-download entirely.
+<IfModule mod_headers.c>
+    <FilesMatch "\.(wasm|mjs)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "^[0-9a-f]{64}$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+# The manifest that points at those hashed chunks should revalidate promptly
+# instead of being cached for a year, so future model updates are picked up.
+<IfModule mod_headers.c>
+    <Files "resources.json">
+        Header set Cache-Control "public, max-age=300, must-revalidate"
+    </Files>
+</IfModule>
